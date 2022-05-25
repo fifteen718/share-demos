@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax demo</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <style>
+        #myDiv {
+            width: 500px;
+            height: 200px;
+            padding: 12px;
+            margin: 20px 0;
+            word-break: break-all;
+            overflow-y: scroll;
+            border: 1px solid #dcdcdc;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）</h3>
+    <div id="myDiv">
+        <p>使用 AJAX 修改该文本内容</p>
+    </div>
+    <button type="button" onclick="reqByXhr()">XHR 请求</button>
+    <button type="button" onclick="reqByAxios()">Axios 请求</button>
+    <button type="button" onclick="reqByMyAxios()">MyAxios 请求</button>
+</body>
+
+</html>
