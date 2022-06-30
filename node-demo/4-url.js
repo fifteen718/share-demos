@@ -2,22 +2,13 @@
  * demo-4
  * 使用 fs 模块返回 json 文件
  */
-var fs = require('fs');
-var http = require('http');
-http.createServer(function (request, response) {
-    // 接收并输出 请求url
-    const url =  request.url;
-    console.log("Request for " + url + " received.");
+const fs = require("fs");
+const http = require("http");
 
-    // 设置 HTTP 头部 
-    var header = {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json;charset=utf-8'
-    }
-    response.writeHead(200, header);
+const hostname = "127.0.0.1";
+const port = 3000;
 
-    const responseData = './api/test.json';
-    // const responseData = `./api${url}.json`;
+const server = http.createServer((req, res) => {
     /**
      * 更多 url 解析可以使用其他 node 原生模块
      * @example
@@ -25,13 +16,22 @@ http.createServer(function (request, response) {
      * var querystring = require('querystring');
      * var util = require('util');
      */
-    fs.readFile(responseData, (err, data) => {
+    console.log("Request for " + req.url + " received.");
+
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json;charset=utf-8");
+
+    const readPath = './api/test.json';
+    // const readPath = `./api${req.url}.json`;
+    fs.readFile(readPath, (err, data) => {
         if (err) {
-            response.end(String(err));
+            res.end(String(err));
         } else {
-            response.end(data);
+            res.end(data);
         }
     });
-}).listen(8888, 'localhost', () => {
-    console.log('Server running at http://127.0.0.1:8888/ or http://localhost:8888/')
+});
+
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
 });

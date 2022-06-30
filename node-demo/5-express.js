@@ -1,6 +1,6 @@
-var express = require("express"); //express框架模块
-var path = require("path"); //系统路径模块
-var fs = require("fs"); //文件模块
+const express = require("express"); //express框架模块
+const path = require("path"); //系统路径模块
+const fs = require("fs"); //文件模块
 
 // 创建 express 的服务器实例
 const app = express();
@@ -33,8 +33,7 @@ app.get("/api/*", (req, res) => {
   console.log(req.query);
 
   //文件路径，__dirname为当前运行js文件的目录
-  var file = path.join(__dirname, `${req.path}.json`);
-
+  const file = path.join(__dirname, `${req.path}.json`);
   fs.readFile(file, "utf-8", function (err, data) {
     if (err) {
       res.send("文件读取失败");
@@ -45,7 +44,7 @@ app.get("/api/*", (req, res) => {
 });
 
 // 调用 app.listen 方法，指定端口号并启动web服务器
-app.listen(8888, function () {
+app.listen(8888, () => {
   console.log(
     "Express server running at http://127.0.0.1:8888/ or http://localhost:8888/"
   );
