@@ -1,6 +1,6 @@
 
 function reqByAxios() {
-    axios.get('http://localhost:8888/api/user')
+    axios.get('http://localhost:3000/api/user')
         .then(function (response) {
             // handle success
             console.log('/// axios response is: ///');

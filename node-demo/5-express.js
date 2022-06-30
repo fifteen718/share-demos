@@ -44,8 +44,8 @@ app.get("/api/*", (req, res) => {
 });
 
 // 调用 app.listen 方法，指定端口号并启动web服务器
-app.listen(8888, () => {
+app.listen(3000, () => {
   console.log(
-    "Express server running at http://127.0.0.1:8888/ or http://localhost:8888/"
+    "Express server running at http://127.0.0.1:3000/ or http://localhost:3000/"
   );
 });
